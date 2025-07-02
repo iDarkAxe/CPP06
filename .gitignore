@@ -1,0 +1,10 @@
+**/a.out
+**/lib/*
+**/*.o
+**/*.d
+**/.obj/
+.vscode/settings.json
+
+ex00/scalar
+ex01/serialize
+ex02/searchType
