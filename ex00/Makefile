@@ -30,12 +30,14 @@ P_INC = ./
 INC = \
 	ScalarConverter.hpp \
 	ft_types.hpp \
+	ft_printFrom.hpp \
 
 # Source files
 SRC = \
 	main.cpp \
 	ScalarConverter.cpp \
 	ft_types.cpp \
+	ft_printFrom.cpp \
 
 LIBS = \
 

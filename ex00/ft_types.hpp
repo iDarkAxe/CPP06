@@ -1,7 +1,11 @@
 #ifndef FT_TYPES_HPP
 # define FT_TYPES_HPP
 
-#include <string>
+# include <string>
+
+# ifndef DEBUG
+#  define DEBUG 0
+# endif
 
 enum e_type
 {
