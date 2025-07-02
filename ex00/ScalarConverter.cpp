@@ -15,7 +15,7 @@
 #include "ft_printFrom.hpp"
 #include <iostream>
 
-void ScalarConverter::convert(std::string str) const
+void ScalarConverter::convert(std::string str)
 {
 	if (str.empty())
 	{
@@ -47,4 +47,22 @@ void ScalarConverter::convert(std::string str) const
 			std::cout << "Unknown type." << std::endl;
 			return;
 	}
+}
+
+ScalarConverter::ScalarConverter()
+{
+
+}
+ScalarConverter::~ScalarConverter()
+{
+
+}
+ScalarConverter::ScalarConverter(const ScalarConverter &src)
+{
+	(void)src;
+}
+ScalarConverter &ScalarConverter::operator=(const ScalarConverter &rhs)
+{
+	(void)rhs;
+	return *this;
 }

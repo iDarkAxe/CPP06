@@ -6,7 +6,7 @@
 /*   By: ppontet <ppontet@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/28 11:18:26 by ppontet           #+#    #+#             */
-/*   Updated: 2025/07/02 16:39:03 by ppontet          ###   ########lyon.fr   */
+/*   Updated: 2025/07/02 18:13:39 by ppontet          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,7 @@ int main(int argc, char **argv)
 	}
 	print_int(2458.0f);
 	std::string trimmed = ft_trim(argv[1]);
-	ScalarConverter a;
-	a.convert(trimmed);
+	ScalarConverter::convert(trimmed);
 	return 0;
 }
 
@@ -104,13 +103,12 @@ int exhaustive_convert_test()
 		"nan", "+nan", "-nan", ".", ".f", "0.f", ".0f"
 	};
 	const size_t nbr_tests = sizeof(test_cases) / sizeof(test_cases[0]);
-	ScalarConverter a;
 
 	for (size_t i = 0; i < nbr_tests; ++i)
 	{
 		if (PRINT_TESTED)
 			std::cout << "Testing: '" << test_cases[i] << "'" << std::endl;
-		a.convert(test_cases[i]);
+		ScalarConverter::convert(test_cases[i]);
 		std::cout << "__________" << std::endl;
 	}
 	return 0;
