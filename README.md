@@ -2,7 +2,7 @@
 
 CPP Module 06 or how to learn C++ from C.
 
-Casts
+Casts : static_cast, reinterpret_cast and dynamic_cast.
 
 ---
 
@@ -10,4 +10,4 @@ Casts
 
 CPP Module 06 ou comment apprendre le C++ à partir du C.
 
-Casts
+Casts : static_cast, reinterpret_cast et dynamic_cast.
