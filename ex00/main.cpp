@@ -6,7 +6,7 @@
 /*   By: ppontet <ppontet@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/28 11:18:26 by ppontet           #+#    #+#             */
-/*   Updated: 2025/07/02 18:13:39 by ppontet          ###   ########lyon.fr   */
+/*   Updated: 2025/08/05 11:19:31 by ppontet          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ int main(int argc, char **argv)
 		std::cout << "Usage: " << argv[0] << " <number to display>" << std::endl;
 		return 1;
 	}
-	print_int(2458.0f);
 	std::string trimmed = ft_trim(argv[1]);
 	ScalarConverter::convert(trimmed);
 	return 0;

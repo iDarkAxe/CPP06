@@ -95,7 +95,7 @@ void printFromDouble(std::string str)
 	}
 	print_char(static_cast<char>(out));
 	print_int(out);
-	std::cout << "float: " << static_cast<float>(out) << std::endl;
+	std::cout << "float: " << static_cast<float>(out) << "f" << std::endl;
 	std::cout << "double: " << out << std::endl;
 }
 
