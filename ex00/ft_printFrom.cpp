@@ -48,7 +48,7 @@ void printFromChar(std::string str)
 	char out;
 	if (str.length() == 3 && str[0] == '\'' && str[2] == '\'')
 		out = str[1];
-	else 
+	else
 		out = str[0];
 	std::cout << "char: '" << out << "'" << std::endl;
 	std::cout << "int: '" << static_cast<int>(out) << "'" << std::endl;
@@ -59,8 +59,12 @@ void printFromChar(std::string str)
 void printFromInt(std::string str)
 {
 	int out;
-	out = std::atoi(str.c_str());
-	print_char(static_cast<char>(out));
+	std::stringstream iss(str);
+	iss >> out;
+	if (out < 0 || out > 255)
+		print_char(static_cast<char>(1));
+	else
+		print_char(static_cast<char>(out));
 	std::cout << "int: " << out << std::endl;
 	std::cout << "float: " << static_cast<float>(out) << "f" << std::endl;
 	std::cout << "double: " << static_cast<double>(out) << std::endl;
@@ -72,8 +76,15 @@ void printFromFloat(std::string str)
 	out = static_cast<float>(std::atof(str.c_str()));
 	print_char(static_cast<char>(out));
 	print_int(out);
-	std::cout << "float: " << out << "f" << std::endl;
-	std::cout << "double: " << static_cast<double>(out) << std::endl;
+	size_t dotPos = str.find('.');
+	if ((str.length() >= dotPos + 2 &&  str[dotPos + 1] == '0' && str[dotPos + 2] == 'f') || str[dotPos + 1] == 'f')
+		std::cout << "float: " << out << ".0f" << std::endl;
+	else
+		std::cout << "float: " << out << "f" << std::endl;
+	if ((str.length() >= dotPos + 2 &&  str[dotPos + 1] == '0' && str[dotPos + 2] == '\0') || dotPos == str.length() - 2)
+		std::cout << "double: " << static_cast<double>(out) << ".0" << std::endl;
+	else
+		std::cout << "double: " << static_cast<double>(out) << std::endl;
 }
 
 #include <sstream>
@@ -95,13 +106,20 @@ void printFromDouble(std::string str)
 	}
 	print_char(static_cast<char>(out));
 	print_int(out);
-	std::cout << "float: " << static_cast<float>(out) << "f" << std::endl;
-	std::cout << "double: " << out << std::endl;
+	size_t dotPos = str.find('.');
+	if ((str.length() == dotPos + 1 ||  str[dotPos + 1] == '0'))
+		std::cout << "float: " << out << ".0f" << std::endl;
+	else
+		std::cout << "float: " << static_cast<float>(out) << "f" << std::endl;
+	if ((str.length() >= dotPos + 2 &&  str[dotPos + 1] == '0' && str[dotPos + 2] == '\0') || str[dotPos + 1] == '\0')
+		std::cout << "double: " << out << ".0" << std::endl;
+	else
+		std::cout << "double: " << out << std::endl;
 }
 
 void printFromInvalid(void)
 {
-	std::cout << "char: Non displayable" << std::endl;
+	std::cout << "char: impossible" << std::endl;
 	std::cout << "int: nan" << std::endl;
 	std::cout << "float: nanf" << std::endl;
 	std::cout << "double: nan" << std::endl;

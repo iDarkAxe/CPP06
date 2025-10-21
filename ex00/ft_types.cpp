@@ -25,14 +25,7 @@ e_type getType(const std::string &str)
 		return TYPE_CHAR;
 	if (str.length() == 4 && str[0] == '\'' && str[3] == '\'' && str[1] == '\\')
 	{
-		switch (str[2])
-		{
-			case 'n': case 't': case 'v': case 'b':
-			case 'r': case 'f': case 'a': case '\\': case '\'': case '\"':
-				return TYPE_CHAR;
-			default:
-				return TYPE_INVALID;
-		}
+		return TYPE_INVALID;
 	}
 
 	if (str == "inf" || str == "+inf" || str == "-inf" || str == "nan" || str == "+nan" || str == "-nan")
