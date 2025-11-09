@@ -6,7 +6,7 @@
 /*   By: ppontet <ppontet@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/28 11:18:26 by ppontet           #+#    #+#             */
-/*   Updated: 2025/08/05 11:19:31 by ppontet          ###   ########lyon.fr   */
+/*   Updated: 2025/11/09 19:02:31 by ppontet          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int main(int argc, char **argv)
 }
 
 // Exhaustive tests
-/* int main(int argc, char **argv)
+/* int main(void)
 {
 	exhaustive_type_test();
 	exhaustive_convert_test();
@@ -61,14 +61,17 @@ int exhaustive_type_test()
 {
 	const std::string test_cases[] = {
 		"42", "-42", "0", "3.14f", "-3.14f", "3.14", "-3.14",
-		"'a'", "'\t'", "'1'", "' '", "'9'", "inf", "+inf", "-inf",
-		"nan", "+nan", "-nan", ".", ".f", "0.f", ".0f"
+		"'a'", "'\t'", "'1'", "' '", "'9'", "inff", "+inff", "-inff",
+		"nanf", "inf", "+inf", "-inf",
+		"nan", ".", ".f", "0.f", ".0f"
 	};
-	e_type expected_type[] = {
-		TYPE_INT, TYPE_INT, TYPE_INT, TYPE_FLOAT, TYPE_FLOAT, TYPE_DOUBLE, TYPE_DOUBLE,
-		TYPE_CHAR, TYPE_CHAR, TYPE_CHAR, TYPE_CHAR, TYPE_CHAR, TYPE_FLOAT, TYPE_FLOAT, TYPE_FLOAT,
-		TYPE_FLOAT, TYPE_FLOAT, TYPE_FLOAT, TYPE_CHAR, TYPE_INVALID, TYPE_FLOAT, TYPE_FLOAT
-	};
+	// e_type expected_type[] = {
+	// 	TYPE_INT, TYPE_INT, TYPE_INT, TYPE_FLOAT, TYPE_FLOAT, TYPE_DOUBLE, TYPE_DOUBLE,
+	// 	TYPE_CHAR, TYPE_CHAR, TYPE_CHAR, TYPE_CHAR, TYPE_CHAR, TYPE_FLOAT, TYPE_FLOAT, TYPE_FLOAT,
+	// 	TYPE_FLOAT, TYPE_DOUBLE, TYPE_DOUBLE, TYPE_DOUBLE,
+	// 	TYPE_DOUBLE, TYPE_CHAR, TYPE_INVALID, TYPE_FLOAT, TYPE_FLOAT
+	// };
+	// e_type type;
 	const size_t nbr_tests = sizeof(test_cases) / sizeof(test_cases[0]);
 	e_type type;
 	
