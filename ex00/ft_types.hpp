@@ -18,6 +18,8 @@ enum e_type
 
 std::string ft_trim(const std::string &str);
 e_type getType(const std::string &str);
+bool isSpecialFloat(const std::string &str);
+bool isSpecialDouble(const std::string &str);
 void printType(const e_type type);
 
 #endif

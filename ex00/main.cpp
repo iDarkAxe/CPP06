@@ -6,7 +6,7 @@
 /*   By: ppontet <ppontet@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/28 11:18:26 by ppontet           #+#    #+#             */
-/*   Updated: 2025/11/09 19:02:31 by ppontet          ###   ########lyon.fr   */
+/*   Updated: 2025/11/09 21:51:15 by ppontet          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,31 @@ int main(int argc, char **argv)
 }
 
 // Exhaustive tests
-/* int main(void)
+// int main(void)
+// {
+// 	exhaustive_type_test();
+// 	exhaustive_convert_test();
+// 	return (0);
+// }
+
+int exhaustive_convert_test()
 {
-	exhaustive_type_test();
-	exhaustive_convert_test();
-	return (0);
-} */
+	const std::string test_cases[] = {
+		"42", "-42", "0", "3.14f", "-3.14f", "3.14", "-3.14",
+		"'a'", "'\t'", "'1'", "' '", "'9'", "inf", "+inf", "-inf",
+		"nan", "+nan", "-nan", ".", ".f", "0.f", ".0f"
+	};
+	const size_t nbr_tests = sizeof(test_cases) / sizeof(test_cases[0]);
+
+	for (size_t i = 0; i < nbr_tests; ++i)
+	{
+		if (PRINT_TESTED)
+			std::cout << "Testing: '" << test_cases[i] << "'" << std::endl;
+		ScalarConverter::convert(test_cases[i]);
+		std::cout << "__________" << std::endl;
+	}
+	return 0;
+}
 
 int exhaustive_type_test()
 {
@@ -65,15 +84,14 @@ int exhaustive_type_test()
 		"nanf", "inf", "+inf", "-inf",
 		"nan", ".", ".f", "0.f", ".0f"
 	};
-	// e_type expected_type[] = {
-	// 	TYPE_INT, TYPE_INT, TYPE_INT, TYPE_FLOAT, TYPE_FLOAT, TYPE_DOUBLE, TYPE_DOUBLE,
-	// 	TYPE_CHAR, TYPE_CHAR, TYPE_CHAR, TYPE_CHAR, TYPE_CHAR, TYPE_FLOAT, TYPE_FLOAT, TYPE_FLOAT,
-	// 	TYPE_FLOAT, TYPE_DOUBLE, TYPE_DOUBLE, TYPE_DOUBLE,
-	// 	TYPE_DOUBLE, TYPE_CHAR, TYPE_INVALID, TYPE_FLOAT, TYPE_FLOAT
-	// };
-	// e_type type;
-	const size_t nbr_tests = sizeof(test_cases) / sizeof(test_cases[0]);
+	e_type expected_type[] = {
+		TYPE_INT, TYPE_INT, TYPE_INT, TYPE_FLOAT, TYPE_FLOAT, TYPE_DOUBLE, TYPE_DOUBLE,
+		TYPE_CHAR, TYPE_CHAR, TYPE_CHAR, TYPE_CHAR, TYPE_CHAR, TYPE_FLOAT, TYPE_FLOAT, TYPE_FLOAT,
+		TYPE_FLOAT, TYPE_DOUBLE, TYPE_DOUBLE, TYPE_DOUBLE,
+		TYPE_DOUBLE, TYPE_CHAR, TYPE_INVALID, TYPE_FLOAT, TYPE_FLOAT
+	};
 	e_type type;
+	const size_t nbr_tests = sizeof(test_cases) / sizeof(test_cases[0]);
 	
 	for (size_t i = 0; i < nbr_tests; ++i)
 	{
@@ -92,25 +110,6 @@ int exhaustive_type_test()
 			std::cout << "OK ! " << test_cases[i] << " :" << std::endl;
 			printType(type);
 		}
-		std::cout << "__________" << std::endl;
-	}
-	return 0;
-}
-
-int exhaustive_convert_test()
-{
-	const std::string test_cases[] = {
-		"42", "-42", "0", "3.14f", "-3.14f", "3.14", "-3.14",
-		"'a'", "'\t'", "'1'", "' '", "'9'", "inf", "+inf", "-inf",
-		"nan", "+nan", "-nan", ".", ".f", "0.f", ".0f"
-	};
-	const size_t nbr_tests = sizeof(test_cases) / sizeof(test_cases[0]);
-
-	for (size_t i = 0; i < nbr_tests; ++i)
-	{
-		if (PRINT_TESTED)
-			std::cout << "Testing: '" << test_cases[i] << "'" << std::endl;
-		ScalarConverter::convert(test_cases[i]);
 		std::cout << "__________" << std::endl;
 	}
 	return 0;

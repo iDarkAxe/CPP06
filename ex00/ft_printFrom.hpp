@@ -13,13 +13,8 @@
 
 void print_char(char c);
 
-#if TEMPLATE_AUTORIZED == 1
-template <typename Type>
-void print_int(Type nbr);
-#else
 void print_int(double nbr);
 void print_int(float nbr);
-#endif
 
 void printFromChar(std::string str);
 
