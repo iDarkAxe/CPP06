@@ -76,7 +76,7 @@ void printFromFloat(std::string str)
 	print_char(static_cast<char>(out));
 	print_int(out);
 	std::cout << "float: " << std::fixed << std::setprecision(6) << out << "f" << std::endl;
-	std::cout << "double: " << std::fixed << std::setprecision(15) << out << std::endl;
+	std::cout << "double: " << std::fixed << std::setprecision(15) << static_cast<double>(out) << std::endl;
 }
 
 void printFromDouble(std::string str)
@@ -90,7 +90,7 @@ void printFromDouble(std::string str)
 	}
 	print_char(static_cast<char>(out));
 	print_int(out);
-	std::cout << "float: " << std::fixed << std::setprecision(6) << out << "f" << std::endl;
+	std::cout << "float: " << std::fixed << std::setprecision(6) << static_cast<float>(out) << "f" << std::endl;
 	std::cout << "double: " << std::fixed << std::setprecision(15) << out << std::endl;
 }
 
