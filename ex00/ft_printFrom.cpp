@@ -41,8 +41,8 @@ void printFromChar(std::string str)
 		out = str[0];
 	std::cout << "char: '" << out << "'" << std::endl;
 	std::cout << "int: '" << static_cast<int>(out) << "'" << std::endl;
-	std::cout << "float: " << std::fixed << static_cast<float>(out) << "f" << std::endl;
-	std::cout << "double: " << std::fixed << static_cast<double>(out) << std::endl;
+	std::cout << "float: " << std::fixed << std::setprecision(6) << static_cast<float>(out) << "f" << std::endl;
+	std::cout << "double: " << std::fixed << std::setprecision(15) << static_cast<double>(out) << std::endl;
 }
 
 void printFromInt(std::string str)
@@ -50,13 +50,18 @@ void printFromInt(std::string str)
 	int out;
 	std::stringstream iss(str);
 	iss >> out;
+	if (iss.fail() || !iss.eof())
+	{
+		std::cout << "Error : conversion invalid\n";
+		return;
+	}
 	if (out < 0 || out > 255)
 		print_char(static_cast<char>(1));
 	else
 		print_char(static_cast<char>(out));
 	std::cout << "int: " << out << std::endl;
-	std::cout << "float: " << std::fixed << static_cast<float>(out) << "f" << std::endl;
-	std::cout << "double: " << std::fixed << static_cast<double>(out) << std::endl;
+	std::cout << "float: " << std::fixed << std::setprecision(6) << static_cast<float>(out) << "f" << std::endl;
+	std::cout << "double: " << std::fixed << std::setprecision(15) << static_cast<double>(out) << std::endl;
 }
 
 void printFromFloat(std::string str)
