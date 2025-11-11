@@ -17,8 +17,8 @@ void print_int(double nbr)
 {
 	if (std::isnan(nbr))
 		std::cout << "int: impossible" << std::endl;
-	else if (nbr < std::numeric_limits<int>::min() || nbr > std::numeric_limits<int>::max())
-		std::cout << "int: impossible" << std::endl;
+	// else if (nbr < std::numeric_limits<int>::min() || nbr > std::numeric_limits<int>::max())
+	// 	std::cout << "int: impossible" << std::endl;
 	else
 		std::cout << "int: " << static_cast<int>(nbr) << std::endl;
 }
@@ -26,8 +26,8 @@ void print_int(float nbr)
 {
 	if (std::isnan(nbr))
 		std::cout << "int: impossible" << std::endl;
-	else if (nbr < std::numeric_limits<int>::min() || nbr > std::numeric_limits<int>::max())
-		std::cout << "int: impossible" << std::endl;
+	// else if (nbr < std::numeric_limits<int>::min() || nbr > std::numeric_limits<int>::max())
+	// 	std::cout << "int: impossible" << std::endl;
 	else
 		std::cout << "int: " << static_cast<int>(nbr) << std::endl;
 }
@@ -62,44 +62,31 @@ void printFromInt(std::string str)
 void printFromFloat(std::string str)
 {
 	float out;
-	if (isSpecialFloat(str))
-	{
-		std::cout << "char: impossible" << std::endl;
-		std::cout << "int: impossible" << std::endl;
-		std::cout << "float: " << str << "f" << std::endl;
-		std::cout << "double: " << str << std::endl;
+	char *end;
+	out = strtof(str.c_str(), &end);
+	if (end == str.c_str()) {
+		std::cout << "Error : conversion invalid\n";
 		return;
 	}
-	out = std::atof(str.c_str());
 	print_char(static_cast<char>(out));
 	print_int(out);
-	std::cout << "float: " << std::fixed << out << "f" << std::endl;
-	std::cout << "double: " << std::fixed << out << std::endl;
+	std::cout << "float: " << std::fixed << std::setprecision(6) << out << "f" << std::endl;
+	std::cout << "double: " << std::fixed << std::setprecision(15) << out << std::endl;
 }
 
 void printFromDouble(std::string str)
 {
 	double out;
-
-	if (isSpecialDouble(str))
-	{
-		std::cout << "char: impossible" << std::endl;
-		std::cout << "int: impossible" << std::endl;
-		std::cout << "float: " << str << "f" << std::endl;
-		std::cout << "double: " << str << std::endl;
-		return;
-	}
-	std::istringstream iss(str);
-	iss >> out;
-	if (iss.fail() || !iss.eof())
-	{
-		std::cout << "Invalid double conversion." << std::endl;
+	char *end;
+	out = strtod(str.c_str(), &end);
+	if (end == str.c_str()) {
+		std::cout << "Error : conversion invalid\n";
 		return;
 	}
 	print_char(static_cast<char>(out));
 	print_int(out);
-	std::cout << "float: " << std::fixed << out << "f" << std::endl;
-	std::cout << "double: " << std::fixed << out << std::endl;
+	std::cout << "float: " << std::fixed << std::setprecision(6) << out << "f" << std::endl;
+	std::cout << "double: " << std::fixed << std::setprecision(15) << out << std::endl;
 }
 
 void printFromInvalid(void)

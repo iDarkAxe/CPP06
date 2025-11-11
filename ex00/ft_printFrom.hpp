@@ -6,6 +6,7 @@
 #include <cmath>
 #include <limits>
 #include <sstream>
+#include <iomanip>
 
 #ifndef TEMPLATE_AUTORIZED
 # define TEMPLATE_AUTORIZED 0
